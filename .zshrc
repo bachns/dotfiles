@@ -1,21 +1,28 @@
 # Bachns' aliases
-alias ll='ls -lh --color=auto'
-alias l='ls -lah --color=auto'
+alias l='ls -lh --color=auto'
+alias ll='ls -lah --color=auto'
 
+if [[ $(uname) == "Darwin" ]]; then
+  # Home brew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Home brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+  # ZSH plugins for MacOS
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+elif [[ $(uname) == "Linux" ]]; then
+  # ZSH plugins for linux
+  source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# Disable the ZSH underline
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 
 # Starship
 eval "$(starship init zsh)"
 
 
-# ZSH plugins
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Disable the ZSH underline
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
