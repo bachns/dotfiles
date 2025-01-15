@@ -37,8 +37,11 @@ config.background = {
 config.window_padding = {
 	left = 3,
 	right = 3,
-	top = 0,
-	bottom = 0,
+	top = 3,
+	bottom = 3,
 }
+
+config.initial_cols = 120
+config.initial_rows = 32
 
 return config
