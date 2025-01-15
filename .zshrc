@@ -1,6 +1,6 @@
 # Bachns' aliases
-alias l='ls -lh --color=auto'
-alias ll='ls -lah --color=auto'
+alias ll='ls -lh --color=auto'
+alias l='ls -lah --color=auto'
 
 if [[ $(uname) == "Darwin" ]]; then
   # Home brew
