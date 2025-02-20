@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
-
+local act = wezterm.action
 local config = wezterm.config_builder()
 
---config.automatically_reload_config = true
+config.automatically_reload_config = true
 config.default_cursor_style = "BlinkingBlock"
 config.window_close_confirmation = "NeverPrompt"
 config.enable_tab_bar = false
@@ -40,8 +40,31 @@ config.window_padding = {
 	top = 3,
 	bottom = 3,
 }
-
 config.initial_cols = 120
 config.initial_rows = 32
+
+config.mouse_bindings = {
+	{
+		event = { Down = { streak = 1, button = "Right" } },
+		mods = "NONE",
+		action = wezterm.action_callback(function(window, pane)
+			local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+			if has_selection then
+				window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
+				window:perform_action(act.ClearSelection, pane)
+			else
+				window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
+			end
+		end),
+	},
+}
+
+config.keys = {
+	{
+		key = "n",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ToggleFullScreen,
+	},
+}
 
 return config

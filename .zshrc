@@ -21,6 +21,8 @@ fi
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+# Keybind ZSH
+bindkey '^l' autosuggest-accept
 
 # Starship
 eval "$(starship init zsh)"
