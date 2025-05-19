@@ -9,7 +9,7 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.color_scheme = "Night Owl (Gogh)"
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
-config.font_size = 13
+config.font_size = 12
 
 config.window_background_opacity = 0.8
 -- config.macos_window_background_blur = 10
@@ -38,8 +38,6 @@ config.mouse_bindings = {
 		end),
 	},
 }
-config.disable_default_key_bindings = true
-config.send_composed_key_when_left_alt_is_pressed = false
 config.keys = {
     -- activate pane selection mode with the default alphabet (labels are "a", "s", "d", "f" and so on)
     { key='8', mods='CTRL', action=act.PaneSelect },
@@ -49,7 +47,7 @@ config.keys = {
     { key='0', mods='CTRL', action=act.PaneSelect{mode='SwapWithActive'} },
     
     -- full screen
-    { key="n", mods="SHIFT|CTRL", action = wezterm.action.ToggleFullScreen },
+    { key="N", mods="CTRL", action = wezterm.action.ToggleFullScreen },
     
     -- arrow keys
     { key="h", mods="CTRL", action=wezterm.action.SendKey{key="LeftArrow"} },
@@ -61,9 +59,9 @@ config.keys = {
     { key = "LeftArrow", mods = "OPT", action = wezterm.action{SendString="\x1bb"} },
     { key = "RightArrow", mods = "OPT", action = wezterm.action{SendString="\x1bf"} },
 
-    -- split pane
-    { key = '"', mods = 'CTRL|SHIFT|ALT', action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'} },
-    { key = '%', mods = 'CTRL|SHIFT|ALT', action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'} },
+    -- rotate pane
+    { key = 'b', mods = 'CTRL', action = act.RotatePanes 'CounterClockwise' },
+    { key = 'n', mods = 'CTRL', action = act.RotatePanes 'Clockwise' },
 }
 
 return config
