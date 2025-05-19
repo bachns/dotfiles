@@ -11,34 +11,14 @@ config.color_scheme = "Night Owl (Gogh)"
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
 config.font_size = 13
 
-config.background = {
-	{
-		source = {
-			File = "/Users/bachns/.config/wezterm/bg-monterey.jpg",
-		},
-		hsb = {
-			hue = 1.0,
-			saturation = 1.02,
-			brightness = 0.25,
-		},
-		width = "100%",
-		height = "100%",
-	},
-	{
-		source = {
-			Color = "#282c35",
-		},
-		width = "100%",
-		height = "100%",
-		opacity = 0.55,
-	},
-}
+config.window_background_opacity = 0.8
+-- config.macos_window_background_blur = 10
 
 config.window_padding = {
-	left = 3,
-	right = 3,
-	top = 3,
-	bottom = 3,
+	left = 8,
+	right = 8,
+	top = 8,
+	bottom = 8,
 }
 config.initial_cols = 120
 config.initial_rows = 32
@@ -58,23 +38,32 @@ config.mouse_bindings = {
 		end),
 	},
 }
-
+config.disable_default_key_bindings = true
+config.send_composed_key_when_left_alt_is_pressed = false
 config.keys = {
-	{
-		key = "n",
-		mods = "SHIFT|CTRL",
-		action = wezterm.action.ToggleFullScreen,
-	},
-	{
-		key = "LeftArrow",
-		mods = "OPT",
-		action = wezterm.action{ SendString="\x1bb" }
-	},
-    	{
-		key = "RightArrow",
-		mods = "OPT",
-		action = wezterm.action{ SendString="\x1bf" }
-	},
+    -- activate pane selection mode with the default alphabet (labels are "a", "s", "d", "f" and so on)
+    { key='8', mods='CTRL', action=act.PaneSelect },
+    -- activate pane selection mode with numeric labels
+    { key = '9', mods = 'CTRL', action=act.PaneSelect{alphabet = '1234567890'} },
+    -- show the pane selection mode, but have it swap the active and selected panes
+    { key='0', mods='CTRL', action=act.PaneSelect{mode='SwapWithActive'} },
+    
+    -- full screen
+    { key="n", mods="SHIFT|CTRL", action = wezterm.action.ToggleFullScreen },
+    
+    -- arrow keys
+    { key="h", mods="CTRL", action=wezterm.action.SendKey{key="LeftArrow"} },
+    { key="l", mods="CTRL", action=wezterm.action.SendKey{key="RightArrow"} },
+    { key="k", mods="CTRL", action=wezterm.action.SendKey{key="UpArrow"} },
+    { key="j", mods="CTRL", action=wezterm.action.SendKey{key="DownArrow"} },
+    
+    -- move cursor word by word
+    { key = "LeftArrow", mods = "OPT", action = wezterm.action{SendString="\x1bb"} },
+    { key = "RightArrow", mods = "OPT", action = wezterm.action{SendString="\x1bf"} },
+
+    -- split pane
+    { key = '"', mods = 'CTRL|SHIFT|ALT', action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'} },
+    { key = '%', mods = 'CTRL|SHIFT|ALT', action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'} },
 }
 
 return config
