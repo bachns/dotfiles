@@ -22,11 +22,14 @@ ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Keybind ZSH
-bindkey '^l' autosuggest-accept
+# bindkey '^l' autosuggest-accept
+# use wezterm-keys instead
 
 # Starship
 eval "$(starship init zsh)"
 
+# SSH agent
+eval "$(ssh-agent -s)"
 
 
 export NVM_DIR="$HOME/.nvm"

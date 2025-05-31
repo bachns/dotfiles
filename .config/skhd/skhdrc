@@ -1,12 +1,13 @@
 # App shortcuts
-cmd + alt - v : open -a 'Visual Studio Code'
 cmd + alt - b : open -a 'Brave Browser'
-cmd + alt - n : open -a 'Notion'
 cmd + alt - c : open -a 'Google Chrome'
-cmd + alt - t : open -a 'Tabby'
 cmd + alt - d : open -a 'DataGrip'
+cmd + alt - v : open -a 'Visual Studio Code'
 cmd + alt - i : open -a 'IntelliJ IDEA'
-cmd + alt - p : open -a 'Postman'
+cmd + alt - n : open -a 'Notion'
+cmd + alt - p : open -a 'Preview'
+cmd + alt - t : open -a 'Tabby'
+cmd + alt - w : open -a 'WezTerm'
 
 # change window focus within space
 alt - j : yabai -m window --focus south
