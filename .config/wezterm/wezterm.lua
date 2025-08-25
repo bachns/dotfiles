@@ -60,7 +60,7 @@ config.keys = {
     { key = "RightArrow", mods = "OPT", action = wezterm.action{SendString="\x1bf"} },
 
     -- rotate pane
-    { key = 'b', mods = 'CTRL', action = act.RotatePanes 'CounterClockwise' },
+    -- { key = 'b', mods = 'CTRL', action = act.RotatePanes 'CounterClockwise' },
     { key = 'n', mods = 'CTRL', action = act.RotatePanes 'Clockwise' },
 }
 
