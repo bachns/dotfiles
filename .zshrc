@@ -29,17 +29,15 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 eval "$(starship init zsh)"
 
 # SSH agent
-eval "$(ssh-agent -s)"
+#eval "$(ssh-agent -s)"
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # JAVA versions manager
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
 
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/bachns/.lmstudio/bin"
