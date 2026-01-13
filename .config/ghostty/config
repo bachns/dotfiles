@@ -3,7 +3,7 @@ macos-non-native-fullscreen = true
 
 theme = Night Owl
 background-opacity = 0.8
-font-size = 13
+font-size = 12
 font-family = JetBrainsMonoNL Nerd Font 
 
 window-width=96
@@ -14,4 +14,8 @@ cursor-style = block
 cursor-color = #22da6e
 cursor-style-blink = true
 shell-integration-features = ssh-env, no-cursor
-#term = xterm-256color
+
+keybind = ctrl+h=csi:D
+keybind = ctrl+j=csi:B
+keybind = ctrl+k=csi:A
+keybind = ctrl+l=csi:C
