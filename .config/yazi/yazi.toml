@@ -1,0 +1,7 @@
+[mgr]
+show_hidden = true
+
+keymap = [
+  { on = "<C-c>", run = "close", desc = "Close the current tab, or quit if it's last" },
+]
+

@@ -40,4 +40,42 @@ eval "$(starship init zsh)"
 #export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
 
+# Java home
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+# Ant home
+export ANT_HOME=$(brew --prefix ant)/libexec
+
+
 fastfetch
+
+# Added by Antigravity
+export PATH="/Users/bachns/.antigravity/antigravity/bin:$PATH"
+
+
+# SSH management
+function s() {
+  local target=$(grep -E "^Host " ~/.ssh/config | awk '{$1=""; print}' | grep -v "[*?]" | fzf --height=40% --layout=reverse --border --prompt="Select Server: ")
+  if [ -n "$target" ]; then
+    echo "Connecting to $target..."
+    local hostname=$(echo $target | awk '{print $1}')
+    ssh "$hostname"
+  fi
+}
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+function yf() {
+  local target=$(grep -E "^Host " ~/.ssh/config | awk '{$1=""; print}' | grep -v "[*?]" | fzf --height=40% --layout=reverse --border --prompt="Select Server: ")
+  if [ -n "$target" ]; then
+    echo "Connecting to $target..."
+    local hostname=$(echo $target | awk '{print $1}')
+    yazi sftp://"$hostname"
+  fi
+}
